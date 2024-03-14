@@ -1,8 +1,11 @@
+/* eslint-disable */
 import "bootstrap";
 import "./style.css";
+
 import "./assets/img/rigo-baby.jpg";
 import "./assets/img/4geeks.ico";
 
+let excuse;
 let who = [
   "Steve Buscemi",
   "Ronald McDonald",
@@ -39,7 +42,7 @@ let when = [
 ];
 
 function generateExcuse() {
-  return (
+  excuse =
     who[Math.floor(Math.random() * who.length)] +
     " " +
     action[Math.floor(Math.random() * action.length)] +
@@ -47,14 +50,13 @@ function generateExcuse() {
     what[Math.floor(Math.random() * what.length)] +
     " " +
     when[Math.floor(Math.random() * when.length)] +
-    "."
-  );
+    ".";
+
+  let excuseElement = document.getElementById("excuse");
+  excuseElement.innerHTML = excuse;
 }
 
 window.onload = function() {
-  // console.log(generateExcuse());
-  // console.log(excuseElement);
-  let excuse = generateExcuse();
-  let excuseElement = document.getElementById("excuse");
-  excuseElement.innerHTML = excuse;
+  generateExcuse();
+  document.getElementById("myBtn").addEventListener("click", generateExcuse);
 };
